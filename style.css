@@ -1,0 +1,16 @@
+.d-flex{
+    display: flex;
+}
+.flex-column{
+    flex-direction: column;
+}
+.w-50{
+    width: 50% ;
+}
+.d-none{
+    display: none;
+}
+.erreur{
+    color: red;
+    
+}
