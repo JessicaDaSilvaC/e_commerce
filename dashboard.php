@@ -17,11 +17,10 @@
             <option value="direct"> en direct</option>
             <option value="e-commerce"> en e-commerce<option>
         </select>
-        <label  class="label_direct d-none" name="label_adress ">Adresse de l'achat</label>
-        <input type="text" class="direct d-none" name="adress_achat">
-        <label  class="label_e_commerce d-none" name="label_adress "> adresse url du site</label>
-    
-        <input type="text" class="e-commerce d-none" name="url_site">
+        <label  class="label_direct" name="label_adress ">Adresse de l'achat</label>
+        <input type="text" class="direct" name="adress_achat">
+        <label  class="label_e_commerce d-none" name="label_adress "> adresse url du site</label>    
+        <input type="text" class="e-commerce d-none" name="url_site" id="input_url">
         <?php 
         if(!isset($erreur_url)){
             

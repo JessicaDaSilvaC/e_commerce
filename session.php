@@ -26,7 +26,7 @@
       <?php echo $bienvenue?>
       <a href="deconnexion.php">Se déconnecter</a>
    </h2>
-   <h2> <a href="traitement/traitement_produit.php">Ajouter un produit</a> </h2>
+   <h2> <a href="dashboard.php">Ajouter un produit</a> </h2>
    <table>
       <tr>
          <th>Nom produit</th>
