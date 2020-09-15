@@ -24,8 +24,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=dashboard', 'root', '');
             if($traitement_url){
                 if($traitement_prix_euro){
                     
-                    $stmt = $pdo->prepare("INSERT INTO tous_les_produit (adresse_achat, nom_produit,reference,categorie,date_achat,date_fin_garantie,prix,ticket_achat,conseil_entretiens,url_achat) VALUES 
-                    ( :adress_achat,:nom_produit,:reference,:categorie,:date_achat,:fin_garantie,:prix,:ticket_achat,:conseil_entretien,:url_achat)");
+                    $stmt = $pdo->prepare("INSERT INTO produits (adresse_achat, nom_produit,reference,categorie,date_achat,date_fin_garantie,prix,ticket_achat,conseil_entretiens,url_achat)
+                     VALUES ( :adress_achat,:nom_produit,:reference,:categorie,:date_achat,:fin_garantie,:prix,:ticket_achat,:conseil_entretien,:url_achat)");
                     $stmt->bindParam(':adress_achat', $adress_achat);
                     $stmt->bindParam(':nom_produit', $nom_produit);
                     $stmt->bindParam(':nom_produit', $nom_produit);
@@ -38,6 +38,28 @@ $pdo = new PDO('mysql:host=localhost;dbname=dashboard', 'root', '');
                     $stmt->bindParam(':conseil_entretien', $conseil_entretien);
                     $stmt->bindParam(':url_achat', $url_site);
                     $stmt->execute();
+
+                    $nom_file=$_FILES['facture']['name'];
+                    //$utilisateur=$_SESSION['utilisateur'];
+                    $extension_file= pathinfo($nom_file, PATHINFO_EXTENSION);
+                    $size_file=1000000;
+                    $extension_autorise=['png','jpg'];
+                    $chemin_file='facture';
+
+                        if(in_array($extension_file,$extension_autorise)){
+
+                            if($_FILES['facture']['size']<=$size_file){
+                        
+                                $nom_fichier=$_FILES['facture']['tmp_name'];
+                                move_uploaded_file($nom_fichier, "$chemin_file/test.png");
+                                
+                            }else{
+                                echo 'le fichier ne doit pas dépasser les 1mo';
+                            }
+                        }else{
+                            echo 'le format de fichier doit etre de type png ou jpg';
+                        }
+
                 }else{
                     $erreur_symbole="la chaine doit posséder un chiffre et le symbole €";          
                 }
@@ -48,23 +70,3 @@ $pdo = new PDO('mysql:host=localhost;dbname=dashboard', 'root', '');
             $erreur_formulaire='tous les champs doivent etre remplis';
         }
     }
-/*$nom_file=$_FILES['facture']['name'];
-//$utilisateur=$_SESSION['utilisateur'];
-$extension_file= pathinfo($nom_file, PATHINFO_EXTENSION);
-$size_file=1000000;
-$extension_autorise=['png','jpg'];
-$chemin_file='facture';
-
-    if(in_array($extension_file,$extension_autorise)){
-
-        if($_FILES['facture']['size']<=$size_file){
-       
-            $nom_fichier=$_FILES['facture']['tmp_name'];
-            move_uploaded_file($nom_fichier, "$chemin_file/test.png");
-            
-        }else{
-            echo 'le fichier ne doit pas dépasser les 1mo';
-        }
-    }else{
-        echo 'le format de fichier doit etre de type png ou jpg';
-    }*/

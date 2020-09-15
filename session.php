@@ -30,13 +30,6 @@
    <table>
       <tr>
          <th>Nom produit</th>
-         <div class="optadress">
-            <input type="radio" class="achat" name="drone" value="achat" checked>
-            <label for="achat">Achat en direct</label>
-            <input type="radio" class="achat" name="drone" value="achat" checked>
-            <label for="achat">Achat en ligne</label>            
-         </div>
-         <!--Faire pour que les casses adresse ou url s'affiche selon choix d'avant-->
          <th>Catégorie</th>
          <th>Référence</th>
          <th>Date d'achat</th>
